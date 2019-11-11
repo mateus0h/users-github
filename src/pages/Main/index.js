@@ -17,6 +17,8 @@ import {
   Bio,
   ProfileButton,
   ProfileButtonText,
+  RemoveButton,
+  RemoveButtonText,
 } from './styles';
 
 export default class Main extends Component {
@@ -77,6 +79,20 @@ export default class Main extends Component {
     navigation.navigate('User', { user });
   };
 
+  hadleRemoveUser = user => {
+    const { users } = this.state;
+
+    const user1 = users.find(u => u.login === user.login);
+    const index = users.indexOf(user1);
+    users.splice(index, 1);
+
+    this.setState({
+      users,
+    });
+
+    AsyncStorage.setItem('users', JSON.stringify(users));
+  };
+
   static navigationOptions = {
     title: 'Usuários',
   };
@@ -117,6 +133,9 @@ export default class Main extends Component {
               <ProfileButton onPress={() => this.handleNavigate(item)}>
                 <ProfileButtonText>Ver perfil</ProfileButtonText>
               </ProfileButton>
+              <RemoveButton onPress={() => this.hadleRemoveUser(item)}>
+                <RemoveButtonText>Remover</RemoveButtonText>
+              </RemoveButton>
             </User>
           )}
         />

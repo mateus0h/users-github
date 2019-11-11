@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { RectButton } from 'react-native-gesture-handler';
 
 export const Container = styled.View`
   flex: 1;
@@ -74,4 +75,13 @@ export const Author = styled.Text`
   font-size: 13px;
   color: #666;
   margin-top: 2px;
+`;
+
+export const StarButton = styled(RectButton)`
+  /* border-radius: 4px; */
+  /* background: #7159c1; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* height: 20px; */
+  /* width: 35px; */
 `;
